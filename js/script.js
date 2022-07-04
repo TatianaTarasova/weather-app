@@ -150,6 +150,7 @@ function showSearchTemp(response) {
     let iconElement = document.querySelector('#icon');
     iconElement.setAttribute("src", `https://openweathermap.org/img/wn/${response.data.weather[0].icon}@2x.png`);
     iconElement.setAttribute("alt", response.data.weather[0].description);
+    celsiusTemperature = Math.round(response.data.main.temp);
 }
 
 
@@ -177,21 +178,36 @@ searchCity('Kyiv');
 
 // let searchCity = document.querySelector('#searchCity');
 // searchCity.addEventListener('submit', changeCityName);
-// function showCelsium() {
-//     let temperature = document.querySelector('#todayTemperature');
-//     temperature.innerHTML = '21';
-// }
+
 
 
 // let celsium = document.querySelector('#celsium');
 // celsium.addEventListener('click', showCelsium);
 
 
-// function showFahr() {
-//     let temperature = document.querySelector('#todayTemperature');
-//     temperature.innerHTML = '66';
+let celsiusTemperature = null;
 
-// }
 
-// let fahrTemp = document.querySelector('#fahrengeit');
-// fahrTemp.addEventListener('click', showFahr);
+function showFahr(event) {
+    event.preventDefault();
+    let fahrenheitTemperature = (celsiusTemperature * 9) / 5 + 32;
+    let temperature = document.querySelector('#todayTemperature');
+    temperature.innerHTML = Math.round(fahrenheitTemperature);
+
+}
+
+
+let fahrTemp = document.querySelector('#fahrengeit');
+fahrTemp.addEventListener('click', showFahr);
+
+
+
+function showCelsium(event) {
+    event.preventDefault();
+    let temperature = document.querySelector('#todayTemperature');
+    temperature.innerHTML = celsiusTemperature;
+
+}
+
+let celsiumTemp = document.querySelector('#celsium');
+celsiumTemp.addEventListener('click', showCelsium);

@@ -154,6 +154,7 @@ footer {
 .unites a {
   text-decoration: none;
   color: #ffffff;
+  cursor: default;
 }
 
 .unites a:hover {
@@ -163,6 +164,7 @@ footer {
 .unites a.text {
   color: #3232b6;
 }
+
 .gitLink {
   font-weight: bold;
   color: #0dcaf0;
