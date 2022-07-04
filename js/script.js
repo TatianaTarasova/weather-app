@@ -70,7 +70,6 @@ todayDate.innerHTML = formatDate();
 
 for (let i = 0; i < 5; i++) {
     let forecast = document.querySelector('#day' + i);
-    console.log(nameOfDay[today.getDay() + i]);
     let f = i + 1;
 
     forecast.innerHTML = nameOfDay[today.getDay() + f];
@@ -116,7 +115,6 @@ let arr2 = [];
 for (let i = 0; i < 5; i++, now.setDate(now.getDate() + 1)) {
     let day = (now.getDate());
     let month = (now.getMonth() + 1);
-    let year = now.getFullYear();
     if (day > 9) {
         day = (now.getDate() + 1);
     } else {
@@ -127,9 +125,32 @@ for (let i = 0; i < 5; i++, now.setDate(now.getDate() + 1)) {
     } else {
         month = `0${(now.getMonth() + 1)}`;
     }
-    arr2.push(day + '.' + month + "." + year);
+    arr2.push(day + '.' + month);
     let forecastDate = document.querySelector('#date' + i);
     forecastDate.innerHTML = arr2[i];
+
+}
+
+
+function getForecast(coordinates) {
+    console.log(coordinates);
+    let apiKey = "050e67e288ac84e9d900a2f0e0b10db2";
+    let apiUrl = `https://api.openweathermap.org/data/2.5/onecall?lat=${coordinates.lat}&lon=${coordinates.lon}&exclude={part}&appid=${apiKey}&units=metric`;
+    axios.get(apiUrl).then(displayForecast);
+}
+
+
+function displayForecast(response) {
+    let forecastWeather = response.data.daily;
+    for (let i = 0; i < 5; i++) {
+        let forecastMin = document.querySelector('#min' + i);
+        forecastMin.innerHTML = Math.round(forecastWeather[i + 1].temp.min);
+        let forecastMax = document.querySelector('#max' + i);
+        forecastMax.innerHTML = Math.round(forecastWeather[i + 1].temp.max);
+        let iconElement = document.querySelector('#iconForecast' + i);
+        iconElement.setAttribute("src", `https://openweathermap.org/img/wn/${forecastWeather[i+1].weather[0].icon}@2x.png`);
+        iconElement.setAttribute("alt", forecastWeather[i + 1].weather[0].main);
+    }
 
 }
 
@@ -151,6 +172,8 @@ function showSearchTemp(response) {
     iconElement.setAttribute("src", `https://openweathermap.org/img/wn/${response.data.weather[0].icon}@2x.png`);
     iconElement.setAttribute("alt", response.data.weather[0].description);
     celsiusTemperature = Math.round(response.data.main.temp);
+
+    getForecast(response.data.coord);
 }
 
 
@@ -175,14 +198,6 @@ searchForm.addEventListener("submit", handleSubmit);
 searchCity('Kyiv');
 
 
-
-// let searchCity = document.querySelector('#searchCity');
-// searchCity.addEventListener('submit', changeCityName);
-
-
-
-// let celsium = document.querySelector('#celsium');
-// celsium.addEventListener('click', showCelsium);
 
 
 let celsiusTemperature = null;
