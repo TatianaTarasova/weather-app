@@ -1,0 +1,165 @@
+html,
+body {
+  width: 100%;
+  height: 100%;
+}
+
+body {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen,
+    Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
+  color: white;
+  background: #000000;
+  /* background: linear-gradient(to right, #0dcaf0 0%, #000000 100%); */
+}
+h1 {
+  text-align: center;
+  font-weight: bolder;
+  font-size: 50px;
+}
+
+h2 {
+  text-align: center;
+  font-size: 12px;
+  margin-bottom: 2%;
+}
+footer {
+  text-align: center;
+  margin-top: 2%;
+  font-size: smaller;
+}
+
+.row > * {
+  padding-left: 0;
+  padding-right: 0;
+}
+
+.five-days-forecast {
+  text-align: center;
+  padding: 1%;
+}
+
+.verticalLine {
+  border-left: 1px solid rgb(255, 255, 255);
+  height: 100%;
+  float: left;
+}
+.horizontalLine {
+  border-bottom: 1px solid rgb(255, 255, 255);
+  margin-top: 2px;
+  margin-bottom: 10px;
+  width: 100%;
+}
+
+.middleSizeLine {
+  border-bottom: 1px solid rgb(255, 255, 255);
+  margin-top: 30px;
+  margin-bottom: 30px;
+  width: 100%;
+}
+
+.dayOfWeek {
+  display: inline;
+  font-weight: bold;
+  font-size: medium;
+}
+
+.forecastData {
+  font-size: 12px;
+  margin-bottom: 4%;
+}
+.forecastTemperature {
+  font-weight: bold;
+  font-size: 14px;
+  margin-top: 0;
+  padding: 4%;
+}
+.iconLargeStyle {
+  display: flex;
+  justify-content: center;
+  font-size: 50px;
+  padding: 0;
+  color: #0dcaf0;
+}
+.lowHighText {
+  font-size: 12px;
+  font-weight: normal;
+}
+.iconSmallStyle {
+  display: flex;
+  justify-content: center;
+  font-size: 70px;
+  padding: 0;
+  color: #0dcaf0;
+}
+
+.citySearch {
+  display: block;
+  margin: 0 auto;
+  margin-top: 3%;
+}
+
+.searchbar {
+  font-size: smaller;
+}
+
+.iconTodayLargeStyle {
+  font-size: 90px;
+}
+.iconTodaySmallStyle {
+  font-size: 120px;
+}
+
+.currentTemperature {
+  text-align: center;
+  display: flex;
+  justify-content: center;
+}
+
+.currenticonLargeStyle {
+  font-size: 70px;
+  margin-top: 5%;
+}
+.currenticonSmallStyle {
+  font-size: 100px;
+  margin-top: 5%;
+}
+
+.humidity,
+.wind {
+  font-weight: bold;
+  font-size: 22px;
+}
+
+.todayTemperature {
+  margin-bottom: 2%;
+}
+
+.precipitation,
+.wind,
+.todayDate {
+  font-weight: bold;
+}
+
+.windPercipitation {
+  font-size: 12px;
+  margin-top: 10px;
+}
+.unites {
+  font-size: 16px;
+  position: relative;
+  top: -20px;
+  color: aqua;
+}
+
+.unites a {
+  text-decoration: none;
+  color: #ffffff;
+}
+
+.unites a:hover {
+  color: #0dcaf0;
+}
+.unites a:active,
+.unites a.text {
+  color: #3232b6;
+}

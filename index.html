@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>My weather</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Days+One&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+    <script
+      src="https://kit.fontawesome.com/53f6a7a744.js"
+      crossorigin="anonymous"
+    ></script>
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+
+    <link rel="stylesheet" href="/css/style.css" />
+  </head>
+  <body>
+    <div class="container">
+      <div class="col-md-4 mb-3 citySearch">
+        <form class="d-flex" role="search" id="search-form">
+          <input
+            class="form-control me-2 searchbar"
+            type="search"
+            placeholder="Search your city..."
+            aria-label="Search"
+            id="search-city-input"
+          />
+          <button class="btn btn-outline-info m-1 searchbar" type="submit" id="search-button">
+            Search
+          </button>
+          <button class="btn btn-outline-warning m-1 searchbar" id="currentLocation" type="submit">
+             Current 
+          </button>
+        </form>
+      </div>
+
+      <h1 id="cityName">KYIV</h1>
+      <h2>
+        <span class="todayDate" id="today-date">05.07.2022 </span>
+      </h2>
+
+      <div class="row currentTemperature">
+        <div class="col-lg-4">
+        </div>
+        <div class="col-lg-1 col lowHighText">
+          Humidity: <br/> <span class="humidity" id="humidity">49%</span>
+        </div>
+        <div class="col-lg-2 col">
+          <i
+            class="fa-solid fa-cloud-sun-rain currenticonLargeStyle d-none d-md-block"
+          ></i>
+          <i
+            class="fa-solid fa-cloud-sun-rain currenticonSmallStyle d-md-none"
+          ></i>
+        </div>
+        <div class="col-lg-1 col lowHighText">
+          Wind: <br /><span class="wind" id="wind">5 </span>km/h
+        </div>
+        <div class="col-lg-4"></div>
+      </div>
+      <div><h1 class="todayTemperature" ><span id="todayTemperature">21</span><span class="unites"><a href="#" id="celsium">°C | </a><a href="#" id="fahrengeit">°F</a></span></h1></div>
+     
+      </div>
+      <div class="row d-flex justify-content-center five-days-forecast">
+        <div class="col-lg-2 col-md-6">
+          <div class="horizontalLine d-md-none"></div>
+
+          <div class="dayOfWeek" id="day0">Tue</div>
+          <div class="forecastData" id="date0">06.06</div>
+          <div class="forecastIcon">
+            <i
+              class="fa-solid fa-cloud-sun iconLargeStyle d-none d-md-block"
+            ></i>
+            <i class="fa-solid fa-cloud-sun iconSmallStyle d-md-none"></i>
+          </div>
+          <div class="row forecastTemperature">
+            <div class="col-12 lowtemp">
+              <span class="lowHighText">temp: </span>14°
+            </div>
+            
+            <div class="middleSizeLine d-none d-md-block d-lg-none"></div>
+          </div>
+        </div>
+
+        <div class="col-lg-2 col-md-6">
+          <div class="verticalLine d-none d-lg-block"></div>
+          <div class="horizontalLine d-md-none"></div>
+          <div class="dayOfWeek" id="day1">Wed</div>
+          <div class="forecastData" id ="date1">07.06</div>
+          <div class="forecastIcon">
+            <i class="fa-solid fa-cloud iconLargeStyle d-none d-md-block"></i>
+          </div>
+          <i class="fa-solid fa-cloud iconSmallStyle d-md-none"></i>
+          <div class="row forecastTemperature">
+            <div class="col-12 lowtemp">
+              <span class="lowHighText">temp: </span>13°
+            </div>
+            
+            <div class="middleSizeLine d-none d-md-block d-lg-none"></div>
+          </div>
+        </div>
+
+        <div class="col-lg-2 col-md-6">
+          <div class="verticalLine d-none d-lg-block"></div>
+          <div class="horizontalLine d-md-none"></div>
+          <div class="dayOfWeek" id="day2">Thu</div>
+          <div class="forecastData" id="date2">08.06</div>
+          <div class="forecastIcon">
+            <i
+              class="fa-solid fa-cloud-sun-rain iconLargeStyle d-none d-md-block"
+            ></i>
+            <i class="fa-solid fa-cloud-sun-rain iconSmallStyle d-md-none"></i>
+          </div>
+          <div class="row forecastTemperature">
+            <div class="col-12 lowtemp">
+              <span class="lowHighText">temp: </span>16°
+            </div>
+           
+
+            <div class="middleSizeLine d-none d-md-block d-lg-none"></div>
+          </div>
+        </div>
+
+        <div class="col-lg-2 col-md-6">
+          <div class="verticalLine d-none d-lg-block"></div>
+          <div class="horizontalLine d-md-none"></div>
+          <div class="dayOfWeek" id="day3">Fri</div>
+          <div class="forecastData" id="date3">09.06</div>
+          <div class="forecastIcon">
+            <i class="fa-solid fa-sun iconLargeStyle d-none d-md-block"></i>
+          </div>
+          <i class="fa-solid fa-sun iconSmallStyle d-md-none"></i>
+          <div class="row forecastTemperature">
+            <div class="col-12 lowtemp">
+              <span class="lowHighText">temp: </span>17°
+            </div>
+        
+            <div class="middleSizeLine d-none d-md-block d-lg-none"></div>
+          </div>
+        </div>
+
+        <div class="col-lg-2 col-md-6">
+          <div class="verticalLine d-none d-lg-block"></div>
+          <div class="horizontalLine d-md-none"></div>
+          <div class="dayOfWeek" id="day4">Sat</div>
+          <div class="forecastData" id="date4">10.06</div>
+          <div class="forecastIcon iconLargeStyle">
+            <i
+              class="fa-solid fa-cloud-showers-heavy iconLargeStyle d-none d-md-block"
+            ></i>
+          </div>
+          <i
+            class="fa-solid fa-cloud-showers-heavy iconSmallStyle d-md-none"
+          ></i>
+          <div class="row forecastTemperature">
+            <div class="col-12 lowtemp">
+              <span class="lowHighText">temp: </span>17°
+            </div>
+                      </div>
+        </div>
+      </div>
+      <footer>Created by Tatiana Tarasova. 2022</footer>
+      <script src="/js/script.js"></script>
+    </div>
+  </body>
+</html>
