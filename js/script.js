@@ -64,6 +64,8 @@ function formatDate() {
     return (`${dates}${month}${year} ${dayName} ${hours}:${minutes}`);
 }
 
+
+
 let todayDate = document.querySelector('#today-date');
 todayDate.innerHTML = formatDate();
 
@@ -78,10 +80,8 @@ for (let i = 0; i < 5; i++) {
         d = d + 1;
     }
 
-    console.log(day);
     forecast.innerHTML = nameOfDay[day];
 
-    //console.log(nameOfDay[today.getDay() + f]);
 }
 
 
@@ -93,7 +93,6 @@ function showCurrentLocationTemp() {
         let lat = position.coords.latitude;
         let lon = position.coords.longitude;
         let url = `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&units=metric&appid=${apiKey}`;
-        console.log(url);
         axios.get(url).then(showSearchTemp);
     }
 
@@ -104,7 +103,6 @@ function showCurrentLocationTemp() {
 
 let btnCurrentLocations = document.querySelector('#currentLocation');
 btnCurrentLocations.addEventListener('click', showCurrentLocationTemp);
-// showCurrentLocationTemp();
 
 function changeCityName(event) {
     event.preventDefault();
@@ -115,33 +113,7 @@ function changeCityName(event) {
 }
 
 
-// let now = new Date();
-// let time = now.getTime();
-// now = new Date(time - (time % 86400000));
-
-// let arr2 = [];
-
-// for (let i = 0; i < 5; i++, now.setDate(now.getDate() + 1)) {
-//     let day = (now.getDate());
-//     let month = (now.getMonth() + 1);
-//     if (day > 9) {
-//         day = (now.getDate() + 1);
-//     } else {
-//         day = `0${(now.getDate() + 1)}`;
-//     }
-//     if (month > 9) {
-//         month = (now.getMonth() + 1);
-//     } else {
-//         month = `0${(now.getMonth() + 1)}`;
-//     }
-//     arr2.push(day + '.' + month);
-//     let forecastDate = document.querySelector('#date' + i);
-//     forecastDate.innerHTML = "arr2[i]";
-// }
-
-
 function getForecast(coordinates) {
-    console.log(coordinates);
     let apiKey = "050e67e288ac84e9d900a2f0e0b10db2";
     let apiUrl = `https://api.openweathermap.org/data/2.5/onecall?lat=${coordinates.lat}&lon=${coordinates.lon}&exclude={part}&appid=${apiKey}&units=metric`;
     axios.get(apiUrl).then(displayForecast);
@@ -208,29 +180,29 @@ searchCity('Kyiv');
 
 
 
-let celsiusTemperature = null;
+// let celsiusTemperature = null;
 
 
-function showFahr(event) {
-    event.preventDefault();
-    let fahrenheitTemperature = (celsiusTemperature * 9) / 5 + 32;
-    let temperature = document.querySelector('#todayTemperature');
-    temperature.innerHTML = Math.round(fahrenheitTemperature);
+// function showFahr(event) {
+//     event.preventDefault();
+//     let fahrenheitTemperature = (celsiusTemperature * 9) / 5 + 32;
+//     let temperature = document.querySelector('#todayTemperature');
+//     temperature.innerHTML = Math.round(fahrenheitTemperature);
 
-}
-
-
-let fahrTemp = document.querySelector('#fahrengeit');
-fahrTemp.addEventListener('click', showFahr);
+// }
 
 
+// let fahrTemp = document.querySelector('#fahrengeit');
+// fahrTemp.addEventListener('click', showFahr);
 
-function showCelsium(event) {
-    event.preventDefault();
-    let temperature = document.querySelector('#todayTemperature');
-    temperature.innerHTML = celsiusTemperature;
 
-}
 
-let celsiumTemp = document.querySelector('#celsium');
-celsiumTemp.addEventListener('click', showCelsium);
+// function showCelsium(event) {
+//     event.preventDefault();
+//     let temperature = document.querySelector('#todayTemperature');
+//     temperature.innerHTML = celsiusTemperature;
+
+// }
+
+// let celsiumTemp = document.querySelector('#celsium');
+// celsiumTemp.addEventListener('click', showCelsium);
