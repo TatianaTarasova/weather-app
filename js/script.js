@@ -67,12 +67,21 @@ function formatDate() {
 let todayDate = document.querySelector('#today-date');
 todayDate.innerHTML = formatDate();
 
-
+let d = 0;
 for (let i = 0; i < 5; i++) {
-    let forecast = document.querySelector('#day' + i);
-    let f = i + 1;
 
-    forecast.innerHTML = nameOfDay[today.getDay() + f];
+    let forecast = document.querySelector('#day' + i);
+    let day = today.getDay() + i + 1;
+
+    if (day > 6) {
+        day = d;
+        d = d + 1;
+    }
+
+    console.log(day);
+    forecast.innerHTML = nameOfDay[day];
+
+    //console.log(nameOfDay[today.getDay() + f]);
 }
 
 
@@ -106,30 +115,29 @@ function changeCityName(event) {
 }
 
 
-let now = new Date();
-let time = now.getTime();
-now = new Date(time - (time % 86400000));
+// let now = new Date();
+// let time = now.getTime();
+// now = new Date(time - (time % 86400000));
 
-let arr2 = [];
+// let arr2 = [];
 
-for (let i = 0; i < 5; i++, now.setDate(now.getDate() + 1)) {
-    let day = (now.getDate());
-    let month = (now.getMonth() + 1);
-    if (day > 9) {
-        day = (now.getDate() + 1);
-    } else {
-        day = `0${(now.getDate() + 1)}`;
-    }
-    if (month > 9) {
-        month = (now.getMonth() + 1);
-    } else {
-        month = `0${(now.getMonth() + 1)}`;
-    }
-    arr2.push(day + '.' + month);
-    let forecastDate = document.querySelector('#date' + i);
-    forecastDate.innerHTML = arr2[i];
-
-}
+// for (let i = 0; i < 5; i++, now.setDate(now.getDate() + 1)) {
+//     let day = (now.getDate());
+//     let month = (now.getMonth() + 1);
+//     if (day > 9) {
+//         day = (now.getDate() + 1);
+//     } else {
+//         day = `0${(now.getDate() + 1)}`;
+//     }
+//     if (month > 9) {
+//         month = (now.getMonth() + 1);
+//     } else {
+//         month = `0${(now.getMonth() + 1)}`;
+//     }
+//     arr2.push(day + '.' + month);
+//     let forecastDate = document.querySelector('#date' + i);
+//     forecastDate.innerHTML = "arr2[i]";
+// }
 
 
 function getForecast(coordinates) {
