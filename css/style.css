@@ -163,3 +163,11 @@ footer {
 .unites a.text {
   color: #3232b6;
 }
+.gitLink {
+  font-weight: bold;
+  color: #0dcaf0;
+}
+
+.gitLink:hover {
+  color: yellow;
+}
